@@ -20,7 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-int
-main()
-{
+#include "date/date.h"
+#include <iostream>
+
+int main() {
+
+	using namespace date;
+	using namespace std::chrono;
+	year_month_day today = floor<days>(system_clock::now());;
+	std::cout << today - years{3}  << std::endl;
+	std::cout << today - months{3}  << std::endl;
+	std::cout << year_month_day{sys_days{today} - days{5}}  << std::endl;
+
 }
+
+
+/*
+
+g++ just.pass.cpp -I ../include/date/ -std=c++11 && ./a.out
+
+*/
